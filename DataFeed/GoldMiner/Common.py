@@ -41,3 +41,11 @@ def FeedInstrumentsList(market='SHSE',sec_type=1):
         i+=1
     print "Total:" + str(i)
     return SymbolList1
+
+
+def SymbolAddedPrefix(symbol):
+    # print "test"
+    if symbol[0]=='6' or symbol[0]=='3' or symbol[0]=='2':
+        return "SHSE." +symbol
+    elif symbol[0]=='0':
+        return "SZSE." +symbol
