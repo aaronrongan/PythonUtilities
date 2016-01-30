@@ -13,7 +13,7 @@ from gmsdk import td
 import  pandas as pd
 from gmsdk import DailyBar
 from gmsdk import StrategyBase
-import Database.General
+# import Database.General
 
 from Util.Var import GMusername,GMpassword
 
