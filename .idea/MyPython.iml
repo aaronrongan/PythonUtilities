@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/DataFeed" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ThirdParty" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Indicator" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/QuantScan" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Strategy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Test" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/QuantTrade" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/MyTest" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="Python 2.7.11 (C:\Python27\python.exe)" jdkType="Python SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="TestRunnerService">
+    <option name="projectConfiguration" value="Nosetests" />
+    <option name="PROJECT_TEST_RUNNER" value="Nosetests" />
+  </component>
+</module>
