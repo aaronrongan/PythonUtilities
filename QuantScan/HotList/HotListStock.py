@@ -4,7 +4,7 @@ Created on 2016/1/22 16:48  
 
 @author: A.Y
 
-本模块目的：仿照TradeStation、 同花顺中的用法，将如10内涨幅第一的列出
+本模块目的：仿照TradeStation、 同花顺中的用法，将如10内涨幅第一的列出,需要用到自己的SQL 数据库
 """
 import pymssql
 import Database.General
@@ -44,7 +44,7 @@ def GetTopNHighestChange(topNumbers=10, NDays=5):
 
     # Today=datetime.date.today()
     LatestValidDay=Database.General.GetLatestDayofAllStockPrice() #'2016-01-21' #
-    print LatestValidDay
+    print(LatestValidDay)
     LastDay=Database.General.GetLastNDay(LatestValidDay,NDays)
     SymbolList=Database.General.GetStockSymbolList()
     # print SymbolList
@@ -60,7 +60,7 @@ def GetTopNHighestChange(topNumbers=10, NDays=5):
                 (symbol,LatestValidDay,LastDay))
         result = cur.fetchone()
         # print result
-        if result[0]<>None:
+        if result[0]!=None:
             ChangeDict.setdefault(symbol, result[0])
 
         # cur.execute("select max(TheDate) from StockPriceDaily where symbol=%s and ",(symbol))
@@ -85,14 +85,14 @@ start = time.time()
 result1= GetTopNHighestChange(100,5)
 i=1
 for symbol in result1:
-    print i, "-", symbol[0],"-",str(GetStockShortNamebySymbol(symbol[0])), "-", str("%.2f" % (symbol[1]*100)) +"%"
+    print(i, "-", symbol[0],"-",str(GetStockShortNamebySymbol(symbol[0])), "-", str("%.2f" % (symbol[1]*100)) +"%")
     i+=1
 
 # '求出30天涨幅前100位的列表
 result2= GetTopNHighestChange(100,30)
 i=1
 for symbol in result2:
-    print i, "-", symbol[0],"-",str(GetStockShortNamebySymbol(symbol[0])), "-", str("%.2f" % (symbol[1]*100)) +"%"
+    print(i, "-", symbol[0],"-",str(GetStockShortNamebySymbol(symbol[0])), "-", str("%.2f" % (symbol[1]*100)) +"%")
     i+=1
 
 # VIP
@@ -104,15 +104,15 @@ result=list(set(result1).intersection(set(result2)))
 # 这是b中有而a中没有的
 # print list(set(b).difference(set(a))) # b中有而a中没有的
 
-print "30日与5日涨幅最大的交集为："
+print ("30日与5日涨幅最大的交集为：")
 i=1
 ThisDay=Database.General.GetLatestDayofAllStockPrice()
 LastDay=Database.General.GetLastNDay(ThisDay,30)
 print result[0][0], ThisDay, LastDay
 for symbol in result:
     PriceChangePercent=GetStockVaration(symbol[0], ThisDay, LastDay)
-    print i, "-", symbol[0],"-",str(GetStockShortNamebySymbol(symbol[0])),"30日涨幅:",str("%.2f" % (PriceChangePercent*100)) +"%"
+    print(i, "-", symbol[0],"-",str(GetStockShortNamebySymbol(symbol[0])),"30日涨幅:",str("%.2f" % (PriceChangePercent*100)) +"%")
     i+=1
 
 end = time.time()
-print "用时" + end-start + "秒"
+print("用时" + end-start + "秒")
